@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:scan2/screen2.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Barcode Scanner',
       home: BarcodeScannerApp(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -21,7 +23,7 @@ class BarcodeScannerApp extends StatefulWidget {
 }
 
 class _BarcodeScannerAppState extends State<BarcodeScannerApp> {
-  String _barcodeResult = "Scan a barcode";
+  String _barcodeResult = "Where is the future is built pixel by pixel";
 
   Future<void> _scanBarcode() async {
     String barcodeScanResult = await FlutterBarcodeScanner.scanBarcode(
@@ -37,23 +39,39 @@ class _BarcodeScannerAppState extends State<BarcodeScannerApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Barcode Scanner'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              _barcodeResult,
-              style: const TextStyle(fontSize: 16.0),
-            ),
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: _scanBarcode,
-              child: const Text('Scan Barcode'),
-            ),
-          ],
+      //appBar: AppBar(
+      //  title: const Text('Barcode Scanner'),
+      //  backgroundColor: Color.fromARGB(255, 154, 126, 41),
+      //),
+      body: Container(
+        color: Colors.black,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset('lib/assests/1.jpg'),
+              Text(
+                _barcodeResult,
+                style:
+                    const TextStyle(fontSize: 16.0, color: Colors.yellowAccent),
+              ),
+              const SizedBox(height: 20.0),
+              ElevatedButton.icon(
+                //onPressed: _scanBarcode,
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                icon: const Icon(Icons.arrow_right_alt),
+                label: const Text('Scan Barcode'),
+                //onPressed: _scanBarcode.map(screen2()),
+                onPressed: () {
+                  //Navigate to the new screen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => screen2()),
+                  );
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
