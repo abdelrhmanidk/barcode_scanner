@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scan2/main.dart';
 
 class screen2 extends StatelessWidget {
-  const screen2 ({super.key})
+  const screen2({super.key});
 //get _scanBarcode => null;
 
   @override
@@ -13,10 +13,16 @@ class screen2 extends StatelessWidget {
           margin: const EdgeInsets.all(40),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [const SizedBox(height: 30,),
-            const Text('Alternatives'),
-             const SizedBox(height: 30,),
-            TextButton(onPressed:(){} , child:const Text('Scan Again'))],
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              const Text('Alternatives'),
+              const SizedBox(
+                height: 30,
+              ),
+              TextButton(onPressed: () {}, child: const Text('Scan Again'))
+            ],
           ),
         ));
   }
